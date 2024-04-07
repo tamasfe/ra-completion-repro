@@ -17,7 +17,11 @@ pub fn generate_not_in_scope(input: TokenStream) -> TokenStream {
             }
         }
 
-        common::create_wrapper!();
+        // common::create_wrapper!();
+        pub trait Wrapper {
+            type Inner: NotInScope;
+            fn inner(&self) -> Self::Inner;
+        }
     }
     .into()
 }
